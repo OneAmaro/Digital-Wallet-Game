@@ -1,0 +1,88 @@
+<html>
+<head>
+<style>
+body {
+  background: #555;
+}
+.content {
+  max-width: 1080;
+  margin: 20;
+  background: maroon;
+  padding: 25;
+}
+</style>
+</head>
+
+<body>
+  <div class = "content">
+    <p>
+      <button id="lProfile" onclick="proLoad()">LOAD DEF DATA </button>
+      <button id="sProfile" onclick="proSave()">SAVE DEF DATA</button>
+<p>
+Sender ID
+<p>
+<input id="sId" value ="Ss">
+<p>
+Receiver ID
+<p>
+<input id="rId" value ="Rr">
+<p>
+Amount to Send
+<p>
+$<input id="amount" value = "0">
+<p>
+SUBMIT TO PROCEED <input type = submit onclick="sendAmount()">
+<p>
+<p id="teller" value = "∆" >∆</p>
+—————
+<p>
+<button id="lStorage" onclick="logStorage()">Log Storage</button>
+<button id="cStorage" onclick="clearStorage()">Clear Storage</button>
+
+<p id="currentStored">NOTHING LOGGED</p>
+<p id="storageSpace">Total = 0.00 KB</p>
+</body>
+
+<script>
+/////LOAD AMD SAVE/////
+//LOAD//
+//📺 DISPLAY RECORD COMPLETE
+
+function sendAmount(){
+  var recor = 0;
+  while (recor < localStorage.length){
+    recor++;
+}
+var date = new Date();
+var sender = document.getElementById("sId").value;
+var receiver = document.getElementById("rId").value;
+var amount = document.getElementById("amount").value;
+
+/////TRANSACTION DETAILS, RECORDING, AND STORAGE/////
+//DETAILS
+  var rec0 = "Record " + recor + " complete:" + " " + date + " " + sender + " sent " + receiver + " $" + amount;
+document.getElementById("teller").innerHTML = rec0;
+//LOCAL STORAGE
+    localStorage.setItem("Record "+recor, rec0);
+}
+
+////////////////////////////////////
+////////////////////////////////////
+//📺DISPLAY LOG IN WINDOW
+//////LOG STORAGE/////
+function logStorage(){
+console.log("Local storage");
+var i;
+for (var i = 0; i < localStorage.length; i++){
+    console.log("=[" + localStorage.getItem(localStorage.key(i)) + "]");
+}
+  alert(localStorage.getItem("Record " + 3));
+}
+//LOG STORAGE KB SPACE//
+/////CLEAR STORAGE/////
+function clearStorage() {
+ localStorage.clear();
+  document.getElementById("teller").innerHTML = "∆";
+}
+</script>
+</html>
